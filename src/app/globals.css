@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -16,18 +10,35 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
+
+html, body {
+  height: 100%;
+  @apply bg-gray-100;
+}
+
+.form-input,
+.form-textarea {
+  @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+
+  &.error {
+    @apply bg-red-50 border-red-500 text-red-900 placeholder-red-700;
+  }
+}
+
+.form-label {
+  @apply block mb-2 text-sm font-medium text-gray-900 dark:text-white;
+
+  &.error {
+    @apply text-red-500;
+  }
+}
+
+.link {
+  @apply font-medium text-blue-600 dark:text-blue-500 hover:underline;
+}
+
