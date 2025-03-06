@@ -11,7 +11,7 @@ const UserSongs = async ({ params }: { params: { userId: string } }) => {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
-    queryKey: ["user-songs", userId],
+    queryKey: ["songs", userId],
     queryFn: () => getUserSongs(userId),
   });
 

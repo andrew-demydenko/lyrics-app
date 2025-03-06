@@ -24,10 +24,10 @@ const SongItem = ({ song }: { song: TSong }) => {
     onSuccess: () => {
       toast.success("Song is deleted");
       queryClient.invalidateQueries({
-        queryKey: ["shared-songs"],
+        queryKey: ["songs"],
       });
       queryClient.invalidateQueries({
-        queryKey: ["user-songs", user?.id],
+        queryKey: ["songs", user?.id],
       });
     },
     onError: () => {

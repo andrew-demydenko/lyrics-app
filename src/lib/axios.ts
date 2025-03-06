@@ -58,9 +58,7 @@ axiosInstance.interceptors.response.use(
         const { data } = await axiosWrapper.post("/auth/refresh-token");
         const newAccessToken = data.accessToken;
 
-        if (typeof window !== "undefined") {
-          AuthService.setAccessToken(newAccessToken);
-        }
+        AuthService.setAccessToken(newAccessToken);
 
         pendingRequests.forEach((r) => {
           r.resolve(newAccessToken);

@@ -69,10 +69,10 @@ export default function SongForm({ editData }: { editData?: TSong | null }) {
     },
     onSuccess: (data) => {
       queryClient.invalidateQueries({
-        queryKey: ["shared-songs"],
+        queryKey: ["songs"],
       });
       queryClient.invalidateQueries({
-        queryKey: ["user-songs", user?.id],
+        queryKey: ["songs", user?.id],
       });
       router.push(`/songs/${data.id}`);
       toast.success("Song saved successfully");

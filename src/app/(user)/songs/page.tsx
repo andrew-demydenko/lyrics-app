@@ -10,7 +10,7 @@ const SharedSongs = async () => {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
-    queryKey: ["shared-songs"],
+    queryKey: ["songs"],
     queryFn: getSharedSongs,
   });
 

@@ -25,23 +25,13 @@ export const useSongById = (
   });
 };
 
-export const useUserSongs = (
-  userId: string,
+export const useSongs = (
+  userId?: string,
   options?: UseQueryOptions<TSong[]>
 ) => {
   return useQuery<TSong[], Error>({
-    queryKey: ["user-songs", userId],
-    queryFn: () => getUserSongs(userId),
-    staleTime: 1000 * 10,
-    retry: false,
-    ...options,
-  });
-};
-
-export const useSharedSongs = (options?: UseQueryOptions<TSong[]>) => {
-  return useQuery<TSong[], Error>({
-    queryKey: ["shared-songs"],
-    queryFn: () => getSharedSongs(),
+    queryKey: userId ? ["songs", userId] : ["songs"],
+    queryFn: () => (userId ? getUserSongs(userId) : getSharedSongs()),
     staleTime: 1000 * 10,
     retry: false,
     ...options,
